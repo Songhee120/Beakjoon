@@ -7,23 +7,14 @@ public class BJ2869 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
 		int a = Integer.parseInt(st.nextToken());
 		int b = Integer.parseInt(st.nextToken());
 		int v = Integer.parseInt(st.nextToken());
-		int days = 0;
-		int height = 0;
-
-//		while(height < v) {
-//			days++;
-//			height += a;
-//			if(height < v) {
-//				height -= b;
-//			}
-//		}
-
-		v -= a;
-		days = v / (a - b);
 		
+		int days = (v - a) / (a - b) + 1;
+		days = (v - a) % (a - b) > 0 ? days + 1 : days;	// 나머지가 있을 경우
+
 		System.out.println(days);
 	}
 }
